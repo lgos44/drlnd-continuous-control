@@ -4,7 +4,7 @@
 [image2]: https://user-images.githubusercontent.com/10624937/43851646-d899bf20-9b00-11e8-858c-29b5c2c94ccc.png "Crawler"
 
 
-# Project 2: Continuous Control
+# Continuous Control
 
 ### Introduction
 
@@ -26,7 +26,7 @@ The second version is useful for algorithms like [PPO](https://arxiv.org/pdf/170
 
 #### 1: First Version
 
-The task is episodic, and in order to solve the environment,  your agent must get an average score of +30 over 100 consecutive episodes.
+The task is episodic, and in order to solve the environment, your agent must get an average score of +30 over 100 consecutive episodes.
 
 #### 2: Second Version
 
@@ -38,23 +38,44 @@ The environment is considered solved, when the average (over 100 episodes) of th
 
 ### Instructions
 
-1. Download the environment from one of the links below.  You need only select the environment that matches your operating system:
+1. Create (and activate) a new environment with Python 3.6.
 
-    - **_Version 1: One (1) Agent_**
-        - Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/one_agent/Reacher_Linux.zip)
-        - Mac OSX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/one_agent/Reacher.app.zip)
-        - Windows (32-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/one_agent/Reacher_Windows_x86.zip)
-        - Windows (64-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/one_agent/Reacher_Windows_x86_64.zip)
+	- __Linux__ or __Mac__: 
+	```bash
+	conda create --name drlnd python=3.6
+	source activate drlnd
+	```
+	- __Windows__: 
+	```bash
+	conda create --name drlnd python=3.6 
+	activate drlnd
+	```
+  
+3. Navigate to the `python/` folder.  Then, install the dependencies.
+```bash
+cd ./python
+pip install .
+```
 
+4. Create an [IPython kernel](http://ipython.readthedocs.io/en/stable/install/kernel_install.html) for the `drlnd` environment.  
+```bash
+python -m ipykernel install --user --name drlnd --display-name "drlnd"
+```
+
+5. Before running code in a notebook, change the kernel to match the `drlnd` environment by using the drop-down `Kernel` menu.
+
+6. Download the environment from one of the links below, matching your operating system:
     - **_Version 2: Twenty (20) Agents_**
         - Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher_Linux.zip)
         - Mac OSX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher.app.zip)
         - Windows (32-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher_Windows_x86.zip)
         - Windows (64-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher_Windows_x86_64.zip)
     
-    (_For AWS_) If you'd like to train the agent on AWS (and have not [enabled a virtual screen](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-on-Amazon-Web-Service.md)), then please use [this link](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/one_agent/Reacher_Linux_NoVis.zip) (version 1) or [this link](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher_Linux_NoVis.zip) (version 2) to obtain the "headless" version of the environment.  You will **not** be able to watch the agent without enabling a virtual screen, but you will be able to train the agent.  (_To watch the agent, you should follow the instructions to [enable a virtual screen](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-on-Amazon-Web-Service.md), and then download the environment for the **Linux** operating system above._)
+    (_For AWS_) If you'd like to train the agent on AWS (and have not [enabled a virtual screen](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-on-Amazon-Web-Service.md)), then please use [this link](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher_Linux_NoVis.zip) (version 2) to obtain the "headless" version of the environment.  You will **not** be able to watch the agent without enabling a virtual screen, but you will be able to train the agent.  (_To watch the agent, you should follow the instructions to [enable a virtual screen](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-on-Amazon-Web-Service.md), and then download the environment for the **Linux** operating system above._)
 
-2. Place the file in the DRLND GitHub repository, in the `p2_continuous-control/` folder, and unzip (or decompress) the file. 
+7. Place the file in the DRLND GitHub repository, in the root of this repository, and unzip (or decompress) the file. 
 
-3. Run the notebook `Continuous_Control.ipynb` to train and test the agent.
+8. For PPO clone  https://github.com/ShangtongZhang/DeepRL and place deep_rl on the root of the repository.
+
+8. Run the notebook `Continuous_Control-PPO.ipynb` to train and test the agent using Proximal Policy Optimization or `Continuous_Control-DDPG.ipynb` using Deep Deterministic Policy Gradient.
 

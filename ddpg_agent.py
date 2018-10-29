@@ -13,11 +13,9 @@ BUFFER_SIZE = int(1e6)  # replay buffer size
 BATCH_SIZE = 256        # minibatch size
 GAMMA = 0.99            # discount factor
 TAU = 1e-3              # for soft update of target parameters
-LR_ACTOR = 1e-4         # learning rate of the actor 
+LR_ACTOR = 1e-3         # learning rate of the actor 
 LR_CRITIC = 1e-3        # learning rate of the critic
 WEIGHT_DECAY = 0        # L2 weight decay
-EPSILON = 1.0
-EPSILON_DECAY = 1e-6
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
@@ -25,7 +23,6 @@ class Agent():
     """Interacts with and learns from the environment."""
     
     def __init__(self, state_size, action_size, random_seed):
-        print(LR_CRITIC)
         """Initialize an Agent object.
         
         Params
@@ -37,7 +34,7 @@ class Agent():
         self.state_size = state_size
         self.action_size = action_size
         self.seed = random.seed(random_seed)
-        self.epsilon = EPSILON
+        #self.epsilon = EPSILON
 
         # Actor Network (w/ Target Network)
         self.actor_local = Actor(state_size, action_size, random_seed).to(device)
@@ -75,7 +72,7 @@ class Agent():
             action = self.actor_local(state).cpu().data.numpy()
         self.actor_local.train()
         if add_noise:
-            action += self.epsilon * self.noise.sample()
+            action += self.noise.sample()
         return np.clip(action, -1, 1)
 
     def reset(self):
@@ -124,7 +121,7 @@ class Agent():
         self.soft_update(self.actor_local, self.actor_target, TAU)                     
         
         # ---------------------------- update noise ---------------------------- #
-        self.epsilon -= EPSILON_DECAY
+        #self.epsilon -= EPSILON_DECAY
         self.noise.reset()
 
     def soft_update(self, local_model, target_model, tau):
